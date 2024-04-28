@@ -1,0 +1,10 @@
+main.c:78:5:main	1
+main.c:139:6:SystemClock_Config	3
+main.c:179:13:MX_TIM1_Init	9
+main.c:262:13:MX_TIM2_Init	5
+main.c:314:13:MX_USART1_UART_Init	2
+main.c:347:13:MX_GPIO_Init	1
+main.c:373:6:sineValuesGeneration	2
+main.c:381:6:characterDecomposition	1
+main.c:387:6:HAL_TIM_PeriodElapsedCallback	2
+main.c:407:6:Error_Handler	1
