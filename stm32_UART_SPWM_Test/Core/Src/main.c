@@ -389,14 +389,9 @@ void sineValuesGeneration(void){
 	}
 }
 
-void characterDecomposition(uint16_t value, uint8_t decomposed[]){
-	decomposed[3] = (value%   10)/   1 + 48;
-	decomposed[2] = (value%  100)/  10 + 48;
-	decomposed[1] = (value% 1000)/ 100 + 48;
-	decomposed[0] = (value%10000)/1000 + 48;
-}
+
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim){
-	TIM1->CCR1 = sinValues[(counter + phaseA)%nValues];
+	TIM1->CCR1 = 959;//sinValues[(counter + phaseA)%nValues];
 	TIM1->CCR2 = sinValues[(counter + phaseB)%nValues];
 	TIM1->CCR3 = sinValues[(counter + phaseC)%nValues];
 	counter++;

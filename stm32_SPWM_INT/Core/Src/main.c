@@ -46,7 +46,7 @@ TIM_HandleTypeDef htim2;
 /* USER CODE BEGIN PV */
 uint16_t nValues;
 uint16_t counter = 0;
-uint16_t sinValues[375]; // Size depends on frequency
+uint16_t sinValues[750]; // Size depends on frequency
 
 double m = 1.0;
 
@@ -106,9 +106,15 @@ int main(void)
 
   HAL_TIM_Base_Start_IT(&htim2);
   HAL_Delay(250);
+
   HAL_TIM_PWM_Start(&htim1, TIM_CHANNEL_1);
+  HAL_TIMEx_PWMN_Start(&htim1, TIM_CHANNEL_1);
+
   HAL_TIM_PWM_Start(&htim1, TIM_CHANNEL_2);
+  HAL_TIMEx_PWMN_Start(&htim1, TIM_CHANNEL_2);
+
   HAL_TIM_PWM_Start(&htim1, TIM_CHANNEL_3);
+  HAL_TIMEx_PWMN_Start(&htim1, TIM_CHANNEL_3);
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -184,7 +190,7 @@ static void MX_TIM1_Init(void)
   htim1.Instance = TIM1;
   htim1.Init.Prescaler = 0;
   htim1.Init.CounterMode = TIM_COUNTERMODE_CENTERALIGNED3;
-  htim1.Init.Period = 1919;
+  htim1.Init.Period = 959;
   htim1.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
   htim1.Init.RepetitionCounter = 0;
   htim1.Init.AutoReloadPreload = TIM_AUTORELOAD_PRELOAD_DISABLE;
@@ -229,7 +235,7 @@ static void MX_TIM1_Init(void)
   sBreakDeadTimeConfig.OffStateRunMode = TIM_OSSR_DISABLE;
   sBreakDeadTimeConfig.OffStateIDLEMode = TIM_OSSI_DISABLE;
   sBreakDeadTimeConfig.LockLevel = TIM_LOCKLEVEL_OFF;
-  sBreakDeadTimeConfig.DeadTime = 0;
+  sBreakDeadTimeConfig.DeadTime = 172;
   sBreakDeadTimeConfig.BreakState = TIM_BREAK_DISABLE;
   sBreakDeadTimeConfig.BreakPolarity = TIM_BREAKPOLARITY_HIGH;
   sBreakDeadTimeConfig.AutomaticOutput = TIM_AUTOMATICOUTPUT_DISABLE;
@@ -266,7 +272,7 @@ static void MX_TIM2_Init(void)
   htim2.Instance = TIM2;
   htim2.Init.Prescaler = 0;
   htim2.Init.CounterMode = TIM_COUNTERMODE_CENTERALIGNED3;
-  htim2.Init.Period = 1919;
+  htim2.Init.Period = 959;
   htim2.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
   htim2.Init.AutoReloadPreload = TIM_AUTORELOAD_PRELOAD_DISABLE;
   if (HAL_TIM_Base_Init(&htim2) != HAL_OK)
@@ -321,11 +327,11 @@ static void MX_GPIO_Init(void)
   * @retval None
   */
 void sineValuesGeneration(void){
-	nValues = floor(37500/freq);
+	nValues = 2*floor(37500/freq);
 	phaseB = 1*floor(nValues/3.00) + phaseA;
 	phaseC = 2*floor(nValues/3.00) + phaseA;
 	for(uint16_t i = 0; i < nValues; i++){
-		sinValues[i] = floor(1919.00*(0.5*m*sin(i*2*3.1416/nValues)+0.5));
+		sinValues[i] = floor(959.00*(0.5*m*sin(i*2*3.14159265358979323846/nValues)+0.5));
 	}
 }
 
