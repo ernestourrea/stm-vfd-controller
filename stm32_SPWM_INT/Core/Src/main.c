@@ -46,15 +46,15 @@ TIM_HandleTypeDef htim2;
 /* USER CODE BEGIN PV */
 uint16_t nValues;
 uint16_t counter = 0;
-uint16_t sinValues[750]; // Size depends on frequency
+uint16_t sinValues[5000]; // Size depends on frequency
 
-double m = 1.0;
+double m = 0.25;
 
 uint16_t phaseA = 0;
 uint16_t phaseB;
 uint16_t phaseC;
 
-uint16_t freq = 100; // Between 375 and 10 Hz
+uint16_t freq = 7.5; // Between 375 and 10 Hz
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -330,15 +330,35 @@ void sineValuesGeneration(void){
 	nValues = 2*floor(37500/freq);
 	phaseB = 1*floor(nValues/3.00) + phaseA;
 	phaseC = 2*floor(nValues/3.00) + phaseA;
-	for(uint16_t i = 0; i < nValues; i++){
-		sinValues[i] = floor(959.00*(0.5*m*sin(i*2*3.14159265358979323846/nValues)+0.5));
+	for(uint16_t i = 0; i < (nValues/2); i++){
+		sinValues[i] = round(959.00*(0.5*m*sin(i*2*3.14159265358979323846/nValues)+0.5));
 	}
 }
 
+//void changeFrequency(uint16_t f){
+//	freq = f;
+//	nValues = 2*floor(37500/freq);
+//}
+
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim){
-	TIM1->CCR1 = sinValues[(counter + phaseA)%nValues];
-	TIM1->CCR2 = sinValues[(counter + phaseB)%nValues];
-	TIM1->CCR3 = sinValues[(counter + phaseC)%nValues];
+	if((counter + phaseA)%nValues < (nValues/2)){
+		TIM1->CCR1 = sinValues[counter + phaseA];
+	}
+	else{
+		TIM1->CCR1 = 959-sinValues[(counter + phaseA)%(nValues/2)];
+	}
+	if((counter + phaseB)%nValues < (nValues/2)){
+		TIM1->CCR2 = sinValues[counter + phaseB];
+	}
+	else{
+		TIM1->CCR2 = 959-sinValues[(counter + phaseB)%(nValues/2)];
+	}
+	if((counter + phaseC)%nValues < (nValues/2)){
+		TIM1->CCR3 = sinValues[counter + phaseC];
+	}
+	else{
+		TIM1->CCR3 = 959-sinValues[(counter + phaseC)%(nValues/2)];
+	}
 	counter++;
 	if(counter > nValues) counter = 0;
 }

@@ -46,14 +46,14 @@ TIM_HandleTypeDef htim2;
 /* USER CODE BEGIN PV */
 uint16_t nValues;
 uint16_t counter = 0;
-uint16_t sinValues[750]; // Size depends on frequency
+uint16_t sinValues[1250]; // Size depends on frequency
 
 double m = 0.98;
 
 uint16_t phaseA = 0;
 uint16_t phaseB;
 
-uint16_t freq = 100; // Between 375 and 10 Hz
+uint16_t freq = 60; // Between 375 and 10 Hz
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/

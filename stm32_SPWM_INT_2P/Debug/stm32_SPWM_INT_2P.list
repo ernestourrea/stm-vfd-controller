@@ -21,9 +21,9 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, ALLOC, LOAD, DATA
   8 .data         00000018  20000000  080045a0  00020000  2**3
                   CONTENTS, ALLOC, LOAD, DATA
-  9 .bss          00000694  20000018  080045b8  00020018  2**2
+  9 .bss          00000a7c  20000018  080045b8  00020018  2**2
                   ALLOC
- 10 ._user_heap_stack 00000604  200006ac  080045b8  000206ac  2**0
+ 10 ._user_heap_stack 00000604  20000a94  080045b8  00020a94  2**0
                   ALLOC
  11 .ARM.attributes 00000029  00000000  00000000  00020018  2**0
                   CONTENTS, READONLY
@@ -1617,8 +1617,8 @@ void sineValuesGeneration(void){
  8000f4c:	408df800 	.word	0x408df800
  8000f50:	20000008 	.word	0x20000008
  8000f54:	200000c4 	.word	0x200000c4
- 8000f58:	200006a4 	.word	0x200006a4
- 8000f5c:	200006a6 	.word	0x200006a6
+ 8000f58:	20000a8c 	.word	0x20000a8c
+ 8000f5c:	20000a8e 	.word	0x20000a8e
  8000f60:	20000000 	.word	0x20000000
  8000f64:	3fe00000 	.word	0x3fe00000
  8000f68:	200000c8 	.word	0x200000c8
@@ -1686,11 +1686,11 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim){
  8000fe0:	bc80      	pop	{r7}
  8000fe2:	4770      	bx	lr
  8000fe4:	200000c6 	.word	0x200000c6
- 8000fe8:	200006a4 	.word	0x200006a4
+ 8000fe8:	20000a8c 	.word	0x20000a8c
  8000fec:	200000c4 	.word	0x200000c4
  8000ff0:	200000c8 	.word	0x200000c8
  8000ff4:	40012c00 	.word	0x40012c00
- 8000ff8:	200006a6 	.word	0x200006a6
+ 8000ff8:	20000a8e 	.word	0x20000a8e
 
 08000ffc <Error_Handler>:
 /**
@@ -2338,7 +2338,7 @@ LoopFillZerobss:
   ldr r2, =_sbss
  800129c:	20000018 	.word	0x20000018
   ldr r4, =_ebss
- 80012a0:	200006ac 	.word	0x200006ac
+ 80012a0:	20000a94 	.word	0x20000a94
 
 080012a4 <ADC1_2_IRQHandler>:
  * @retval : None
@@ -2486,7 +2486,7 @@ __weak void HAL_IncTick(void)
  800134c:	bc80      	pop	{r7}
  800134e:	4770      	bx	lr
  8001350:	20000014 	.word	0x20000014
- 8001354:	200006a8 	.word	0x200006a8
+ 8001354:	20000a90 	.word	0x20000a90
 
 08001358 <HAL_GetTick>:
   * @note  This function is declared as __weak to be overwritten in case of other
@@ -2505,7 +2505,7 @@ __weak uint32_t HAL_GetTick(void)
  8001362:	46bd      	mov	sp, r7
  8001364:	bc80      	pop	{r7}
  8001366:	4770      	bx	lr
- 8001368:	200006a8 	.word	0x200006a8
+ 8001368:	20000a90 	.word	0x20000a90
 
 0800136c <HAL_Delay>:
   *       implementations in user file.
