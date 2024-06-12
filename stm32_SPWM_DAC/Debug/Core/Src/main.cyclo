@@ -1,0 +1,13 @@
+main.c:123:5:main	2
+main.c:229:6:SystemClock_Config	4
+main.c:276:13:MX_ADC1_Init	3
+main.c:323:13:MX_SPI1_Init	2
+main.c:361:13:MX_TIM1_Init	9
+main.c:444:13:MX_TIM2_Init	5
+main.c:496:13:MX_TIM3_Init	5
+main.c:548:13:MX_GPIO_Init	1
+main.c:614:6:sineValuesGeneration	2
+main.c:632:6:HAL_TIM_PeriodElapsedCallback	8
+main.c:702:6:initializeDAC	1
+main.c:733:6:writeValueDAC	1
+main.c:764:6:Error_Handler	1
