@@ -1,7 +1,7 @@
-# TE2012B_EnergySystems
-Code for the activities and final project of the class TE2012B Analysis of Energy Systems
+# Open-loop Scalar Control System for Three-phase Induction Motor
+Classwork and final project for the Analysis of Energy Systems (TE2012B) class of Spring 2024
 
-## Description of files:
+## Description of files (outdated):
 * **stm32_SPWM_INT:** Implementation of 3-phase Sinusoidal PWM using interrupts, including dead time.
 * **stm32_SPWM_INT_2P:** Implementation of 2-phase Sinusoidal PWM using interrupts, including dead time.
 * **stm32_UART_SPWM_Test:** Implementation of 3-phase Sinusoidal PWM using interrupts, including dead time. Implementation of UART protocol and basic formatting functions for testing and debugging.
